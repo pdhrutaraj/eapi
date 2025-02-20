@@ -117,6 +117,21 @@ WSGI_APPLICATION = 'eapi.wsgi.application'
 #    }
 #}
 
+import environ
+
+env = environ.Env()
+environ.Env.read_env()
+
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'eapidb',
+        'USER': 'eapidbowner',
+        'PASSWORD': 'PRmEmTGKjx9bORuTdvCNhJFyKygC3hFp',
+        'HOST': 'dpg-curbcqa3esus73dlptpg-a',
+        'PORT': '5432',
+    }
+}
 
 # Password validation
 # https://docs.djangoproject.com/en/5.1/ref/settings/#auth-password-validators

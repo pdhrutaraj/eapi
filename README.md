@@ -1,4 +1,21 @@
 
+
+
+
+
+"Add Environment Variable" and add the following:
+
+Key	Value (Example)	Description
+DEBUG	False	Disable debug mode in production
+SECRET_KEY	your-secret-key	Keep this secret (generate one using python -c "import secrets; print(secrets.token_hex(32))")
+DATABASE_URL	postgres://user:password@host:port/dbname	PostgreSQL connection string from Render
+ALLOWED_HOSTS	your-app-name.onrender.com	Your Render domain
+CORS_ALLOWED_ORIGINS	https://your-frontend.vercel.app	Allow frontend access
+DJANGO_SUPERUSER_USERNAME	admin	Superuser username (optional)
+DJANGO_SUPERUSER_EMAIL	admin@example.com	Superuser email (optional)
+DJANGO_SUPERUSER_PASSWORD	yourpassword	Superuser password (optional)
+
+
 get admin token:
 curl -X POST http://192.168.1.100:8000/api/token/ \
   -H "Content-Type: application/json" \
@@ -30,6 +47,50 @@ Update Switch	PATCH	/api/switches/1/	{"state": true}
 Delete Switch	DELETE	/api/switches/1/	Authorization: Bearer <token>
 
 sql:
+
+Hostname
+An internal hostname used by your Render services.
+
+dpg-curbcqa3esus73dlptpg-a
+
+Port
+5432
+
+Database
+eapidb
+
+Username
+eapidbowner
+
+
+
+Create PostgreSQL Database & User
+Access PostgreSQL CLI:
+bash
+Copy
+sudo -u postgres psql  # On Linux/macOS
+psql -U postgres       # On Windows (if installed with default settings)
+Create a New Database:
+sql
+Copy
+CREATE DATABASE switch_db;
+Create a Database User and Set a Password:
+sql
+Copy
+CREATE USER switch_user WITH PASSWORD 'yourpassword';
+Grant Permissions to the User:
+sql
+Copy
+ALTER ROLE switch_user SET client_encoding TO 'utf8';
+ALTER ROLE switch_user SET default_transaction_isolation TO 'read committed';
+ALTER ROLE switch_user SET timezone TO 'UTC';
+GRANT ALL PRIVILEGES ON DATABASE switch_db TO switch_user;
+Exit PostgreSQL CLI:
+sql
+Copy
+\q
+
+
 prakash@DESKTOP-C26OAB4:~$ sudo -u postgres psql
 [sudo] password for prakash:
 psql (17.2 (Ubuntu 17.2-1.pgdg24.04+1))
