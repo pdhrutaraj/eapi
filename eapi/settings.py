@@ -116,7 +116,7 @@ WSGI_APPLICATION = 'eapi.wsgi.application'
 #        'NAME': BASE_DIR / 'db.sqlite3',
 #    }
 #}
-
+"""
 import environ
 
 env = environ.Env()
@@ -129,7 +129,7 @@ DATABASES = {
     'default': env.db(),
 }
 
-"""
+
 import environ
 
 env = environ.Env()
