@@ -128,7 +128,7 @@ DATABASES = {
         'NAME': 'eapidb',
         'USER': 'eapidbowner',
         'PASSWORD': 'PRmEmTGKjx9bORuTdvCNhJFyKygC3hFp',
-        'HOST': 'dpg-curbcqa3esus73dlptpg-a',
+        'HOST': 'dpg-curbcqa3esus73dlptpg-a.oregon-postgres.render.com',
         'PORT': '5432',
     }
 }
