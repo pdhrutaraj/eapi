@@ -20,9 +20,9 @@ environ.Env.read_env(os.path.join(os.path.dirname(__file__), "../.env"))
 SECRET_KEY = env("SECRET_KEY")
 DEBUG = env.bool("DEBUG", default=False)
 
-DATABASES = {
-    'default': env.db()
-}
+#DATABASES = {
+#    'default': env.db()
+#}
 
 
 from pathlib import Path
@@ -108,16 +108,16 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'eapi.wsgi.application'
 
-
+#use sqlite3 if postgres free trial expires 
 # Database
 # https://docs.djangoproject.com/en/5.1/ref/settings/#databases
 
-#DATABASES = {
-#    'default': {
-#        'ENGINE': 'django.db.backends.sqlite3',
-#        'NAME': BASE_DIR / 'db.sqlite3',
-#    }
-#}
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / 'db.sqlite3',
+    }
+}
 """
 import environ
 
