@@ -20,9 +20,15 @@ environ.Env.read_env(os.path.join(os.path.dirname(__file__), "../.env"))
 SECRET_KEY = env("SECRET_KEY")
 DEBUG = env.bool("DEBUG", default=False)
 
-DATABASES = {
-    'default': env.db()
-}
+#autocreate superuser
+from django.core.management import execute_from_command_line
+
+if os.environ.get('DJANGO_SUPERUSER_USERNAME') and os.environ.get('DJANGO_SUPERUSER_PASSWORD'):
+    execute_from_command_line(['manage.py', 'createsuperuser', '--noinput'])
+
+#DATABASES = {
+#    'default': env.db()
+#}
 
 
 from pathlib import Path
@@ -110,18 +116,18 @@ WSGI_APPLICATION = 'eapi.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/5.1/ref/settings/#databases
 
-#DATABASES = {
-#    'default': {
-#        'ENGINE': 'django.db.backends.sqlite3',
-#        'NAME': BASE_DIR / 'db.sqlite3',
-#    }
-#}
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / 'db.sqlite3',
+    }
+}
 
-import environ
+#import environ
 
-env = environ.Env()
-environ.Env.read_env()
-
+#env = environ.Env()
+#environ.Env.read_env()
+"""
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
@@ -132,7 +138,7 @@ DATABASES = {
         'PORT': '5432',
     }
 }
-
+"""
 # Password validation
 # https://docs.djangoproject.com/en/5.1/ref/settings/#auth-password-validators
 
