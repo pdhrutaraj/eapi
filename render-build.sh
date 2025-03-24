@@ -1,10 +1,10 @@
 #!/bin/bash
 
 echo "Running Migrations..."
-python manage.py migrate
+python3 manage.py migrate
 
 echo "Creating Superuser (if not exists)..."
-python manage.py createsuperuser
+python3 manage.py createsuperuser
 
 
 
