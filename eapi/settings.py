@@ -24,7 +24,7 @@ DEBUG = env.bool("DEBUG", default=False)
 from django.core.management import execute_from_command_line
 
 if os.environ.get('DJANGO_SUPERUSER_USERNAME') and os.environ.get('DJANGO_SUPERUSER_PASSWORD'):
-    execute_from_command_line(['manage.py', 'createsuperuser', '--noinput'])
+    execute_from_command_line(['manage.py', 'create_superuser', '--noinput'])
 
 #DATABASES = {
 #    'default': env.db()
